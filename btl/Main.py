@@ -13,7 +13,7 @@ from ctypes import cast , POINTER
 from comtypes import CLSCTX_ALL
 from pycaw.pycaw import AudioUtilities , IAudioEndpointVolume
 import numpy as np
-from tkinter import Tk, Button, filedialog
+from tkinter import Tk, Button, filedialog , PhotoImage
 import math
 
 #1. Hàm nhận diện số đếm qua bàn tay
@@ -451,20 +451,21 @@ phimTat3 = StringVar()
 phimTat4 = StringVar()
 phimTat5 = StringVar()
 ds_bien_phimtat = [phimTat1,phimTat2, phimTat3, phimTat4, phimTat5]
-win.title('Ứng dụng nhận diện, thao tác tăng giảm âm lượng, tạo phím tắt cơ bản với bàn tay')
+win.title('Hand Recognition Application')
 win.minsize(height=600,width=500)
-Label(win,text="Ứng dụng nhận diện, thao tác tăng giảm âm lượng, tạo phím tắt cơ bản với bàn tay",fg='red',font=('cambria',15),width=70).grid(row=0)
-listbox = Listbox(win, width=80,height=20)
-listbox.grid(row=1,columnspan=2)
+Label(win,text="Ứng dụng nhận diện, đếm số ngón tay, thao tác tăng giảm âm lượng, tạo phím tắt cơ bản với bàn tay",fg='red',font=('cambria',15)).grid(row=0)
+image = PhotoImage(file="d:\School\Open Source\Documents\Hand.png")
+label = Label(win, image=image)
+label.grid(row=2, column=0)
 
 # tạo các button
 button = Frame(win)
 Button(button,text='Nhận diện số',command=Nhandienso).pack(side=LEFT)
-Button(button,text='Điều chỉnh thanh âm lượng', command= Dieuchinhamluong).pack(side=LEFT)
+Button(button,text='Điều chỉnh âm lượng', command= Dieuchinhamluong).pack(side=LEFT)
 Button(button,text='Tạo phím tắt',command=PhimTat).pack(side=LEFT)
 Button(button,text='Run',command=phim_Tat).pack(side=LEFT)
-Button(button,text='Lưu file',command=Luu_File).pack(side=LEFT)
+Button(button,text='Lưu thông tin phím tắt',command=Luu_File).pack(side=LEFT)
 Button(button,text='Thoát',command=win.quit).pack(side=LEFT)
-button.grid(row=5,column=0)
+button.grid(row=3,column=0)
 
 win.mainloop()
